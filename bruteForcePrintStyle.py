@@ -1,6 +1,6 @@
 import time
 
-MESSAGE = 'hello world69' # Change to your heart's content
+message = input("Input : ").lower()
 COMBINATIONS = 'abcdefghijklmnopqrstuvwxyz1234567890'
 
 def combineArr(arr):
@@ -14,7 +14,7 @@ def combineArr(arr):
 currentState = []
 letterCount = 0;
 
-for i in MESSAGE:
+for i in message:
     letterCount +=1
 
     for x in COMBINATIONS:
@@ -28,8 +28,9 @@ for i in MESSAGE:
 
         currentState[letterCount - 1] = x
 
+        # Handle special chars
+        if x == "0" and i != x:
+            currentState[letterCount - 1] = i
+
         print(combineArr(currentState))
         time.sleep(0.1) # For the extra cool effect of "brute force"
-        
-        if i == x:
-            break
